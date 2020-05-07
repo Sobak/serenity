@@ -41,6 +41,7 @@
 #include <LibWeb/DOM/HTMLLinkElement.h>
 #include <LibWeb/DOM/HTMLScriptElement.h>
 #include <LibWeb/DOM/HTMLStyleElement.h>
+#include <LibWeb/DOM/HTMLTextareaElement.h>
 #include <LibWeb/DOM/HTMLTitleElement.h>
 
 namespace Web {
@@ -74,6 +75,8 @@ NonnullRefPtr<Element> create_element(Document& document, const FlyString& tag_n
         return adopt(*new HTMLFormElement(document, lowercase_tag_name));
     if (lowercase_tag_name == "input")
         return adopt(*new HTMLInputElement(document, lowercase_tag_name));
+    if (lowercase_tag_name == "textarea")
+        return adopt(*new HTMLTextareaElement(document, lowercase_tag_name));
     if (lowercase_tag_name == "br")
         return adopt(*new HTMLBRElement(document, lowercase_tag_name));
     if (lowercase_tag_name == "h1"

@@ -30,6 +30,7 @@
 #include <LibWeb/Frame.h>
 #include <LibWeb/HtmlView.h>
 #include <LibWeb/URLEncoder.h>
+#include "HTMLTextareaElement.h"
 
 namespace Web {
 
@@ -65,6 +66,12 @@ void HTMLFormElement::submit(RefPtr<HTMLInputElement> submitter)
     for_each_in_subtree_of_type<HTMLInputElement>([&](auto& node) {
         auto& input = to<HTMLInputElement>(node);
         if (!input.name().is_null() && (input.type() != "submit" || &input == submitter))
+            parameters.append({ input.name(), input.value() });
+        return IterationDecision::Continue;
+    });
+    for_each_in_subtree_of_type<HTMLTextareaElement>([&](auto& node) {
+        auto& input = to<HTMLTextareaElement>(node);
+        if (!input.name().is_null())
             parameters.append({ input.name(), input.value() });
         return IterationDecision::Continue;
     });

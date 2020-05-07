@@ -53,6 +53,7 @@ LIBWEB_OBJS = \
     DOM/HTMLLinkElement.o \
     DOM/HTMLScriptElement.o \
     DOM/HTMLStyleElement.o \
+    DOM/HTMLTextareaElement.o \
     DOM/HTMLTitleElement.o \
     DOM/ImageData.o \
     DOM/MouseEvent.o \
